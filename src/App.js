@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import List from "./components/List";
 import axios from "axios";
 import Input from "./components/Input";
+import Header from "./components/Header";
 
 function App() {
   const [restaurants, setRestaurants] = useState([]);
@@ -15,11 +16,13 @@ function App() {
     const coords = `${latitude},${longitude},5000`;
     setCoords(coords);
   });
+  console.log(coords)
 
   const queryToApp = (inputData) => {
     console.log(inputData);
     setInput(inputData);
   };
+
 
   const url = "https://dev.virtualearth.net/REST/v1/LocalSearch/";
   useEffect(() => {
@@ -28,8 +31,7 @@ function App() {
         .get(url, {
           params: {
             query: input,
-            userLocation: coords,
-            maxResults: 1,
+            ucmv: coords,
             key:
               "AhT8eNDICOS7i5M8bcAYgoDroJXx0rZ4tc1rNdOCA64wPzH1HkRVnx3eWTukcG-4",
           },
@@ -43,6 +45,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <Input queryToApp={queryToApp} />
       <List restaurants={restaurants} />
     </div>

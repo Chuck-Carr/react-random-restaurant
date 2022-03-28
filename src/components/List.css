@@ -2,3 +2,7 @@
     padding: 1.2rem;
     font-size: 2rem;
 }
+.list a {
+    text-decoration: none;
+    color: blue
+}
