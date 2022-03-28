@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import "./Input.css"
 
-const Input = () => {
-    const text = (e) => {
-        console.log(e.target.value)
+const Input = ({ queryToApp }) => {
+  const [userQuery, setUserQuery] = useState("");
+  const queryChangeHandler = (event) => {
+    setUserQuery(event.target.value);
+  };
+  const submitHandler = (event) => {
+    event.preventDefault();
+    if (userQuery.trim() === "") {
+      alert("Please enter a food category.");
+    } else {
+      setUserQuery(userQuery);
+      queryToApp(userQuery);
+      setUserQuery("");
     }
-  const inputHandler = () => {
-    console.log(text)
-  }
+  };
   return (
-    <div>
-      <form onSubmit={inputHandler} >
-        <input type="text" onChange={text}></input>
-        <button type="submit">Submit</button>
+    <div className="input">
+      <form onSubmit={submitHandler}>
+        <input
+          className="input-text"
+          type="text"
+          name="query"
+          placeholder="Pizza..."
+          value={userQuery}
+          onChange={queryChangeHandler}
+        ></input>
+        <button className="input-button" type="submit">Submit</button>
       </form>
     </div>
   );

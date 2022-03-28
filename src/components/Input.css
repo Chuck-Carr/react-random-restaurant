@@ -1,0 +1,14 @@
+.input {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+.input-text {
+  width: 30%;
+  height: 1.4rem;
+  margin-right: 5px;
+}
+.input-button {
+  padding: 5px;
+  height: 1.8rem;
+}

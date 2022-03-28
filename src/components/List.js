@@ -1,19 +1,23 @@
 import React from "react";
+import "./List.css"
 
 const List = ({ restaurants }) => {
+  const randomRestaurant =
+    restaurants[Math.floor(Math.random() * restaurants.length)];
+
   return (
-    <div>
-      {restaurants.map((r) => (
-        <div key={r.PhoneNumber}>
-          <a href={r.Website}>{r.name}</a>
+    <div className="list">
+      {randomRestaurant && (
+        <div>
+          <a href={randomRestaurant.Website}>{randomRestaurant.name}</a>
           <br />
-          {r.PhoneNumber}
+          {randomRestaurant.PhoneNumber}
           <br />
-          {r.Address.formattedAddress}
+          {randomRestaurant.Address.formattedAddress}
           <br />
           <br />
         </div>
-      ))}
+      )}
     </div>
   );
 };
